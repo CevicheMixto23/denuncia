@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806695073517",
+    "project_id": "denuncia-flutter",
+    "storage_bucket": "denuncia-flutter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806695073517:android:88a3aacf4e80aa3244fee4",
+        "android_client_info": {
+          "package_name": "com.example.denuncia_v1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOiL175ZuY1XoVDe1y3pb2TJ_8k4-ijdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
