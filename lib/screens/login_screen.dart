@@ -16,6 +16,30 @@ class LoginScreen extends StatelessWidget {
             height: size.height * 0.5,
             width: double.infinity,
             color: AppColors.darkBlue,
+            alignment: Alignment.center,
+
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Image.asset(
+                    'assets/DenuncIA_logo.png',
+                    width: size.width * 0.4,
+                    height: size.height * 0.15,
+                  ),
+                ),
+                Text(
+                  'D e n u n c I A',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 30),
+              ],
+            ),
           ),
 
           // Parte blanca encima con borde curvo
@@ -31,7 +55,18 @@ class LoginScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [],
+              ),
             ),
+          ),
+
+          Positioned(
+            top: size.height * 0.36,
+            right: 16,
+            child: Image.asset('assets/Robot.png', width: 121),
           ),
         ],
       ),
