@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Authmodel extends ChangeNotifier {
@@ -29,6 +30,40 @@ class Authmodel extends ChangeNotifier {
   void logout() {
     _isAuthenticated = false;
     notifyListeners();
+  }
+
+  Future<void> registerOrLogin() async {
+    try {
+      // Intentar registrar primero
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _userEmail,
+        password: _password,
+      );
+      _isAuthenticated = true;
+      notifyListeners();
+      print('Usuario registrado correctamente');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        try {
+          // Si el usuario ya existe, intentamos iniciar sesión
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: _userEmail,
+            password: _password,
+          );
+          _isAuthenticated = true;
+          notifyListeners();
+          print('Usuario inició sesión correctamente');
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'wrong-password') {
+            throw Exception('La contraseña es incorrecta.');
+          } else {
+            throw Exception('Error al iniciar sesión: ${e.message}');
+          }
+        }
+      } else {
+        throw Exception('Error al registrar: ${e.message}');
+      }
+    }
   }
 
   void reset() {

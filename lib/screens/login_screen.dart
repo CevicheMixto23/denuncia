@@ -76,7 +76,7 @@ Widget formulario(BuildContext context, bool tecladoAbierto) {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: () {
+          onPressed: () async {
             final input = controller.text.trim();
             if (input.isEmpty) return;
 
@@ -85,6 +85,21 @@ Widget formulario(BuildContext context, bool tecladoAbierto) {
               auth.goToPasswordStage();
             } else {
               auth.setPassword(input);
+              // Guarda el contexto antes del async gap
+              final navigator = Navigator.of(context);
+
+              // Lógica async sin usar context dentro del async gap
+              auth
+                  .registerOrLogin()
+                  .then((_) {
+                    // Aquí puedes usar el context guardado
+                    navigator.pushReplacementNamed('homeScreen');
+                  })
+                  .catchError((e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Error: ${e.toString()}')),
+                    );
+                  });
               // Aquí haces la lógica de login con email y password
               print('Email: ${auth.userEmail}');
               print('Password: ${auth.password}');

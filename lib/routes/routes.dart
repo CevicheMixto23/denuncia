@@ -13,7 +13,9 @@ class AppRouting {
     appRoute.addAll({
       "onBoardingScreen": (BuildContext context) => const OnBoardingScreen(),
     });
-
+    appRoute.addAll({
+      "homeScreen": (BuildContext context) => const HomeScreen(),
+    });
     return appRoute;
   }
 }

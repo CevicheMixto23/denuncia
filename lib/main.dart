@@ -1,6 +1,7 @@
 import 'package:denuncia_v1/firebase_options.dart';
 import 'package:denuncia_v1/providers/authmodel.dart';
 import 'package:denuncia_v1/routes/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,11 +10,21 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+
+  final user = FirebaseAuth.instance.currentUser;
+  String initialRoute;
+
+  if (user != null) {
+    initialRoute = 'homeScreen';
+  } else {
+    initialRoute = 'loginScreen';
+  }
+  runApp(MyApp(initialRoute: initialRoute));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute;
+  const MyApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +32,7 @@ class MyApp extends StatelessWidget {
       providers: [ChangeNotifierProvider(create: (_) => Authmodel())],
       child: MaterialApp(
         title: 'DenuncIA App',
-        initialRoute: AppRouting.initialRoute,
+        initialRoute: initialRoute,
         debugShowCheckedModeBanner: false,
         routes: AppRouting.getRoutes(),
         theme: ThemeData(
