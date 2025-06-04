@@ -41,7 +41,6 @@ class Authmodel extends ChangeNotifier {
       );
       _isAuthenticated = true;
       notifyListeners();
-      print('Usuario registrado correctamente');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         try {
@@ -52,7 +51,6 @@ class Authmodel extends ChangeNotifier {
           );
           _isAuthenticated = true;
           notifyListeners();
-          print('Usuario inició sesión correctamente');
         } on FirebaseAuthException catch (e) {
           if (e.code == 'wrong-password') {
             throw Exception('La contraseña es incorrecta.');

@@ -96,13 +96,12 @@ Widget formulario(BuildContext context, bool tecladoAbierto) {
                     navigator.pushReplacementNamed('homeScreen');
                   })
                   .catchError((e) {
+                    // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Error: ${e.toString()}')),
                     );
                   });
               // Aquí haces la lógica de login con email y password
-              print('Email: ${auth.userEmail}');
-              print('Password: ${auth.password}');
             }
 
             controller.clear();
@@ -113,7 +112,10 @@ Widget formulario(BuildContext context, bool tecladoAbierto) {
               Icon(Icons.email, size: 24),
               const SizedBox(width: 10),
               Padding(
-                padding: const EdgeInsets.only(right: 80),
+                padding:
+                    auth.isEmailStage
+                        ? EdgeInsets.only(right: 80)
+                        : EdgeInsets.only(right: 100),
                 child: Text(
                   auth.isEmailStage ? 'Continuar con Correo' : 'Iniciar sesión',
                 ),
