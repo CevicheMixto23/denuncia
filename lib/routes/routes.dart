@@ -8,13 +8,7 @@ class AppRouting {
   static Map<String, Widget Function(BuildContext)> getRoutes() {
     Map<String, Widget Function(BuildContext)> appRoute = {};
     final user = FirebaseAuth.instance.currentUser;
-    String initialRoute;
 
-    if (user != null) {
-      initialRoute = 'homeScreen';
-    } else {
-      initialRoute = 'loginScreen';
-    }
     appRoute.addAll({
       "loginScreen": (BuildContext context) => const LoginScreen(),
     });
@@ -23,6 +17,9 @@ class AppRouting {
     });
     appRoute.addAll({
       "homeScreen": (BuildContext context) => const HomeScreen(),
+    });
+    appRoute.addAll({
+      "chatbotScreen": (BuildContext context) => const ChatbotScreen(),
     });
     return appRoute;
   }

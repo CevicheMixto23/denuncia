@@ -1,10 +1,16 @@
+import 'package:denuncia_v1/models/message_model.dart';
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
 
 class ChatProvider extends ChangeNotifier {
   late DialogFlowtter _dialogFlowtter;
   List<Map<String, dynamic>> messages = [];
+  final ScrollController chatScrollController = ScrollController();
 
+  List<MessageM> messagesm = [
+    MessageM(text: 'Hola amor!', fromWho: FromWho.me),
+    MessageM(text: 'Ya regresaste del trabajo?', fromWho: FromWho.me),
+  ];
   ChatProvider() {
     _initDialogflow();
   }

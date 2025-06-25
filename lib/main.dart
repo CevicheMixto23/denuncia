@@ -1,5 +1,6 @@
 import 'package:denuncia_v1/firebase_options.dart';
 import 'package:denuncia_v1/providers/authmodel.dart';
+import 'package:denuncia_v1/providers/chat_provider.dart';
 import 'package:denuncia_v1/providers/tabindex.dart';
 import 'package:denuncia_v1/routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => Authmodel()),
         ChangeNotifierProvider(create: (_) => TabIndexProvider()),
+        ChangeNotifierProvider(create: (_) => ChatProvider()),
       ],
       child: MaterialApp(
         title: 'DenuncIA App',

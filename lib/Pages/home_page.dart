@@ -76,7 +76,9 @@ class HomePage extends StatelessWidget {
                   ),
 
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'chatbotScreen');
+                    },
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.white, // Fondo blanco
                       shape: RoundedRectangleBorder(

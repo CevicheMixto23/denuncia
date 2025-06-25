@@ -7,8 +7,11 @@ class Authmodel extends ChangeNotifier {
   String _userEmail = '';
   String _password = '';
 
+  String get displayName =>
+      FirebaseAuth.instance.currentUser?.displayName ?? '';
   bool get isAuthenticated => _isAuthenticated;
   bool get isEmailStage => _isEmailStage;
+
   String get password => _password;
   String get userEmail => _userEmail;
 

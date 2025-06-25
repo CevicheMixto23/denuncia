@@ -29,10 +29,6 @@ class _HomeScreenState extends State<HomeScreen>
       appBar: AppBar(
         backgroundColor: AppColors.darkBlue,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text(
-          'Mi App',
-          style: TextStyle(color: Colors.white),
-        ), // Puedes añadir un título
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(48),
           child: Container(
