@@ -2,6 +2,7 @@ import 'package:denuncia_v1/config/colors.dart';
 import 'package:denuncia_v1/models/message_model.dart';
 import 'package:denuncia_v1/providers/authmodel.dart';
 import 'package:denuncia_v1/providers/chat_provider.dart';
+import 'package:denuncia_v1/widgets/bot_message_bubble.dart';
 import 'package:denuncia_v1/widgets/horizontal_carrousel.dart';
 import 'package:denuncia_v1/widgets/message_field_box.dart';
 import 'package:denuncia_v1/widgets/my_message_bubble.dart';
@@ -106,7 +107,7 @@ class ChatbotScreen extends StatelessWidget {
                           final message = chatProvider.messagesm[index];
                           return (message.fromWho == FromWho.me)
                               ? MyMessageBubble(message: message)
-                              : MyMessageBubble(message: message);
+                              : BotMessageBubble(message: message);
                         },
                       ),
                     ),

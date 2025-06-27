@@ -1,20 +1,20 @@
 import 'package:denuncia_v1/models/message_model.dart';
 import 'package:flutter/material.dart';
 
-class MyMessageBubble extends StatelessWidget {
+class BotMessageBubble extends StatelessWidget {
   final MessageM message;
-  const MyMessageBubble({super.key, required this.message});
+  const BotMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Color.fromRGBO(255, 255, 255, 0.4),
+            color: Color.fromRGBO(59, 130, 246, 0.4),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(

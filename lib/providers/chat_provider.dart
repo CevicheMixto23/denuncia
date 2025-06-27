@@ -7,10 +7,7 @@ class ChatProvider extends ChangeNotifier {
   List<Map<String, dynamic>> messages = [];
   final ScrollController chatScrollController = ScrollController();
 
-  List<MessageM> messagesm = [
-    MessageM(text: 'Hola amor!', fromWho: FromWho.me),
-    MessageM(text: 'Ya regresaste del trabajo?', fromWho: FromWho.me),
-  ];
+  List<MessageM> messagesm = [];
   ChatProvider() {
     _initDialogflow();
   }
@@ -18,6 +15,7 @@ class ChatProvider extends ChangeNotifier {
   Future<void> sendMessage(String text) async {
     if (text.isEmpty) return;
 
+    messagesm.add(MessageM(text: text, fromWho: FromWho.me));
     messages.add({'message': text, 'isUser': true});
     notifyListeners();
 
@@ -28,6 +26,7 @@ class ChatProvider extends ChangeNotifier {
     final botResponse =
         response.message?.text?.text?[0] ?? "No entendí tu mensaje.";
     messages.add({'message': botResponse, 'isUser': false});
+    messagesm.add(MessageM(text: botResponse, fromWho: FromWho.bot));
     notifyListeners();
   }
 
